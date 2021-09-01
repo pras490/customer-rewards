@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Button, TextField, LinearProgress } from '@material-ui/core';
-import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import { addProduct } from '../../api/rewards';
+import './ProductList.css'
 
-export const ProductList = () => {
+function ProductList() {
   const history = useHistory();
   const [transactionDto, setTransactionDto] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -15,28 +16,28 @@ export const ProductList = () => {
   };
 
   const addToList = () => {
-    axios.post(`http://localhost:8080/rewards/transaction`, transactionDto)
+    addProduct(transactionDto)
       .catch(() => {
-        console.log('error')
+        console.log('error while posting a transaction')
       }).finally(() => {
         setIsLoading(false);
         setTransactionDto({});
-        alert('Product Has Been Ordered Succesfully');
+        if(!alert('Product Has Been Ordered Succesfully')){window.location.reload();}
       })
   }
 
   return (
     <div>
       {isLoading && <LinearProgress />}
-      <div style={{ marginTop: '40px' }}>
+      <div className = "ProductList">
         <form>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <TextField style={{ paddingRight: '10px' }} id="outlined-basic" label="Enter Product Price" variant="outlined" onChange={handleChange} />
+          <div className = "AddTransaction">
+            <TextField div className = "Button" id="outlined-basic" label="Enter Product Price" variant="outlined" onChange={handleChange} />
             <Button variant="contained" color="primary" onClick={addToList}>
               Add to transaction List
             </Button>
           </div>
-          <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+          <div className = "GetTransactions">
             <Button variant="contained" color="primary" onClick={() => history.push("/transactionList")}>
               Get All Transactions
             </Button>
@@ -46,3 +47,5 @@ export const ProductList = () => {
     </div>
   )
 }
+
+export default ProductList;

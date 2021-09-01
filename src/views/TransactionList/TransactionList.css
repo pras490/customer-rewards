@@ -1,0 +1,14 @@
+.TransactionList{
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.TransactionList .Rewards{
+  padding-top: 10px;
+}
+
+.TransactionList .Button{
+  display: flex;
+  justify-content: center;
+}

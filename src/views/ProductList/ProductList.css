@@ -1,0 +1,18 @@
+.ProductList{
+  margin-top: 40px;
+}
+
+.ProductList .AddTransaction{
+  display: flex;
+  justify-content: center;
+}
+
+.ProductList .AddTransaction .Button{
+  padding-right: 10px;
+}
+
+.ProductList .GetTransactions{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}

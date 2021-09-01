@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
-import { ProductList } from './views/ProductList';
-import { TransactionList } from './views/TransactionList';
+import ProductList from './views/ProductList';
+import TransactionList from './views/TransactionList';
 
 export const App = () => {
   return (
